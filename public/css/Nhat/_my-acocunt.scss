@@ -1,0 +1,180 @@
+.my-account{
+        .my-account__content{
+            overflow: scroll;;
+            .option{
+                padding:20px 0;
+                border-right: 1px solid #ddd;
+                
+                ul{
+                    .active{
+                        background-color: rgba($color: $main-color, $alpha:0.1);
+                    }
+                   
+                    li{
+                        font-weight: 600;
+                        padding: 18px 35px;
+                        
+                        cursor: pointer;
+                        a{color: #4f4f4f;
+
+                            @include rs-xs{
+                                display: none;
+                            }
+                            @include rs-md{
+                                display: unset;
+                            }
+                        }
+                        &:hover{
+                            background-color: rgba($color: $main-color, $alpha:0.1);
+                        }
+                       
+                        i{
+                            width: 35px;
+                            @include rs-xs{
+                                display: block;
+                                margin-left: -10px;
+                            }
+                            @include rs-md{
+                                display: unset;
+                                margin-left: unset;
+                            }
+                        }
+                        &:first-child{
+                            color: $main-color;
+
+                        }
+                    }
+
+                }
+                .available{
+                    margin-top: 40px;
+                    background-color: rgba(45, 190, 96, 0.5);
+                    padding: 40px 0px;
+                    text-align: center;
+                    @include rs-xs{
+                        display: none;
+                    }
+
+                    @include rs-md{
+                        display: block;
+                    }
+                    i{
+                        display: block;
+                        font-size: 40px;
+                        color: #f1f5f6;
+                    }
+                    h3{
+                        margin: 20px 0;
+                        font-size: 26px;
+                        text-align: center;
+                        color:#1e1d1c;
+                    }
+                    label{
+                        color:#f1f5f6;
+                        font-size: 20px;
+
+                    }
+                    .money{
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        width: 100%;
+                        /* width: 98%; */
+                        padding: 0 10px;
+                    }
+                }
+            }
+            .my-account-content{
+                // padding:25px 40px;
+                min-height: calc(100vh - 85px);
+                padding: 0;
+                background-color:#f1f5f6;
+                h3.title{
+                    font-size: 32px;
+                    font-weight: 600;
+                    color: #333;
+                    margin: 25px 40px;
+                }
+                
+            }
+        }
+}
+
+.personal-details{
+    position: relative;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px 20px 20px;
+
+    @include rs-xs{
+        width: 700px;
+        margin: 10px ;
+    }
+    @include rs-md{
+        width: unset;
+        margin: 40px ;
+    }
+    h4.sub-title{
+        font-size: 15px;
+        color: $main-color;
+        font-weight: bolder;
+        border-bottom: 1px solid rgba($color: #757575, $alpha:0.1);
+        padding: 20px ;
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+}
+.available{
+
+    .money{
+        span{
+            font-size: 14px;
+        }
+      
+    }
+}
+
+.personal-details-content{
+  
+    .info-item{
+        padding: 0 20px 0 0;
+        position: relative;
+        height: 45px;
+        margin: 20px 0;
+       
+        label{
+            display: none;
+            font-size: 12px;
+            position: absolute;
+            top: 0px;
+            font-weight: bolder;
+            color: $main-color;
+        }
+        input{
+            display: block;
+            border: none;
+            border-bottom: 1px solid rgba($color: #757575, $alpha:0.7);
+            outline: none;
+            height: 45px;
+            font-weight: 600;
+            padding: 20px 0px 4px;
+            width: 100%;
+            font-size: 14px;
+            color: #333;
+            &:focus ~label{
+                display: block;
+            }
+            &:focus{
+                border-bottom: 2px solid $main-color;
+            }
+        }
+        .btn-update{
+            display: block;
+            margin-left: auto;
+            width: 200px;
+            color: white
+        }
+    }
+}

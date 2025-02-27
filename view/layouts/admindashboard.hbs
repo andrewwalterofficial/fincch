@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Admin </title>
+	<!-- BOOTSTRAP STYLES-->
+    <link rel="stylesheet"  href="/admin-assets/css/bootstrap.css" />
+     <!-- FONTAWESOME STYLES-->
+    <link rel="stylesheet"  href="/admin-assets/css/font-awesome.css" />
+        <!-- CUSTOM STYLES-->
+    <link rel="stylesheet"  href="/admin-assets/css/custom.css"  />
+     <!-- GOOGLE FONTS-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+</head>
+<body>
+   {{> _foradmin-dashboard}}
+      {{{body}}}
+
+
+
+
+
+
+     <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="/admin-assets/js/jquery-1.10.2.js"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="/admin-assets/js/bootstrap.min.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="/admin-assets/js/jquery.metisMenu.js"></script>
+      <!-- CUSTOM SCRIPTS -->
+    <script src="/admin-assets/js/custom.js"></script>
+
+    <script>
+function openEditModal(userId) {
+    // Fetch user data and populate modal
+    fetch(`/api/users/${userId}`)
+        .then(response => response.json())
+        .then(user => {
+            document.getElementById('userId').value = userId;
+            document.getElementById('editFirstName').value = user.firstName;
+            // Populate other fields
+            $('#editModal').modal('show');
+        });
+}
+
+function saveChanges() {
+    const userId = document.getElementById('userId').value;
+    const formData = {
+        firstName: document.getElementById('editFirstName').value,
+        // Add other fields
+    };
+
+    fetch(`/api/users/${userId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        $('#editModal').modal('hide');
+        // Refresh the page or update the table row
+        location.reload();
+    });
+}
+
+function deleteUser(userId) {
+    if (confirm('Are you sure you want to delete this user?')) {
+        fetch(`/api/users/${userId}`, {
+            method: 'DELETE',
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Remove the table row or refresh the page
+            location.reload();
+        });
+    }
+}
+</script>
+    
+   
+</body>
+
+
+</html>

@@ -1,0 +1,38 @@
+.user-item{
+    height: auto;
+  
+    .table-gutter{
+
+        .table-item{
+            color: #868BA1;
+            .col-xs-2{
+                padding: 0 20px;
+                font-weight: bold;
+                text-transform: uppercase;
+                // background-color: white;
+                border-right: 1px solid #ddd;
+            }
+           .col-xs-10{
+               padding: 0 20px;
+               span{
+                   display: block;
+                   width: 60px;
+               }
+           }
+           
+        }
+    }
+   }
+.user-content.user-item-content{
+    height: auto;
+    border-radius: 5px;
+
+}
+.btn-user-item{
+    height: 35px;
+    min-width: 120px;
+    text-transform: capitalize;
+    min-height: unset;
+    color: white;
+    font-weight: 400;
+}

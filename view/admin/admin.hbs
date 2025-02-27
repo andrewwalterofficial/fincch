@@ -1,0 +1,39 @@
+<div id="page-wrapper" >
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                     <h2>Type in your admin password</h2>   
+                        <h5>Welcome, Love to see you back. </h5>
+                       
+                    </div>
+                </div>
+                 <!-- /. ROW  -->
+                 <hr />
+                 
+
+                 <div class="row">
+                 <div class="col-md-4">
+                 <form action="/admin/login"  method="POST">
+                    <div class="form-group">
+                        <label>ID:</label>
+                        <input type="password" class="form-control" name="password"  />
+                    </div>
+                                        <span style="color:#F00;"></span>
+                                {{#if messages.error}}
+                <div class="alert alert-danger">
+                    {{messages.error}}
+                </div>
+                {{/if}}
+
+                               <button name="sign" style="float:right;" type="submit" class="btn btn-primary">Sign in</button>                 
+                 </form>
+                      <br/> <br/> <br/> <br/> <br/>
+                 </div>
+                 
+                 <div class="col-md-8">
+                 </div>
+                 </div>
+               
+    </div>
+             <!-- /. PAGE INNER  -->
+            </div>

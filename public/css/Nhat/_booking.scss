@@ -1,0 +1,43 @@
+#booking{
+    margin: 4rem auto;
+    div[class^="col-"]{
+        padding: 20px;
+    }
+    .container{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        .screen{
+            background-color: $main-color;
+            min-width: 200px;
+            text-align: center;
+            border-radius:50% 50% 0 0;
+            h3{
+                font-size: 13px;
+                padding: 5px;
+                color: white
+            }
+        }
+        .infor{
+            margin: 20px;
+        }
+        .booked{
+            i{
+                color: $main-color !important ;
+            }
+        }
+        .available{
+            i{
+                color: gray;
+            }
+        }
+        .chairs{
+            i{
+                cursor: pointer;
+                color: gray;
+            }
+        }
+    }
+    
+}

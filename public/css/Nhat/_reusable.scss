@@ -1,0 +1,190 @@
+@import './variables';
+
+.bg-1{
+    background: url('./../../img/bg-1.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+}
+.color-white{
+    color: white;
+}
+.bg-main{
+    background-color: $main-color;
+}
+.bg-black{
+    background-color: #000 !important;
+}
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+
+    @include rs-xs{
+        max-width: 98% ;
+    }
+    @include rs-sm{
+        max-width: 1200px;
+    }
+}
+.btn{
+    background-color: transparent;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none !important;
+    outline: none;
+    border-radius: 4px;
+    padding: 8px 10px;
+    min-height: 45px;
+    letter-spacing: 1.1px;
+    cursor: pointer;
+    transition: all .4s ease-in;
+    background-color: $main-color;
+    &:hover{
+        transform:translateY(-4px);
+        background-color: $main-color;
+        color: white;
+    }
+}
+
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.j-between{
+    justify-content: space-between;
+}
+
+.j-center{
+    justify-content: center;
+}
+
+.j-end{
+    justify-content: flex-end;
+}
+
+.a-center{
+    align-items: center;
+}
+.t-center{
+    text-align: center;
+}
+.bg-main{
+    background-color: $main-color;
+}
+.truncate{
+    width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.full-width{
+    width: 100%;
+}
+.text-color{
+    color: #333;
+}
+.red{
+    color: red !important;
+}
+.t-capitalize{
+    text-transform: capitalize !important;
+}
+.white{
+    color:white;
+}
+.full-height{
+    width: 100%;
+}
+
+.p-relative{
+    position: relative;
+}
+.h-80{
+    height: 80vh;
+    max-height: 100%;
+}
+
+.h-100{
+    height: 100vh;
+    max-height: 100%;
+}
+
+
+
+// Padding  & Margin
+.mt-10{
+    margin-top: 10px;
+}
+
+.ml-10{
+    margin-left: 10px;
+}
+
+.mr-10{
+    margin-right: 10px;
+}
+
+.mb-10{
+    margin-bottom: 10px;
+}
+
+.pd-10{
+    padding: 10px;
+}
+
+.pt-10{
+    padding-top: 10px;
+}
+
+.pl-10{
+    padding-left: 10px;
+}
+
+.pr-10{
+    padding-right: 10px;
+}
+
+.pb-10{
+    padding-bottom: 10px;
+}
+
+.mt-20{
+    margin-top: 20px;
+}
+
+.ml-20{
+    margin-left: 20px;
+}
+
+.mr-20{
+    margin-right: 20px;
+}
+
+.mb-20{
+    margin-bottom: 20px;
+}
+
+.pd-20{
+    padding: 20px;
+}
+
+.pt-20{
+    padding-top: 20px;
+}
+
+.pl-20{
+    padding-left: 20px;
+}
+
+.pr-20{
+    padding-right: 20px;
+}
+
+.pb-20{
+    padding-bottom: 20px;
+}
+
+.mt-100{
+    margin-top: 100px;
+}

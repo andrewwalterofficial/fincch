@@ -1,0 +1,75 @@
+{{#if doneTransfer}}
+ {{#if user}}
+ <div class="loading">
+      <div class="loading-content">
+        <span>Payment Loading.....</span>
+      </div>
+    </div>
+<div >
+    <div>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div style="display: flex;">
+            <img src="/img/cover_prev_ui.png" alt="" width="50%">
+            <p  class="transactiondetails">Transaction Details</p>
+          </div>
+          <div>
+            <h4 style="text-align: center;">Transaction Amount</h4>
+            <h1 style="text-align: center;">$  {{formattedBalance}}</h1>
+            <!-- Add other transaction details as needed -->
+          </div>
+          <div class="modal-body">
+            <div>
+              <h4 style="color: gray;">Beneficiary Details</h4>
+              <div>
+                 <h4 style="font-weight: 600;">{{doneTransfer.receiverName}}</h4>
+                 <p style="font-weight: 600;" >{{doneTransfer.receiverAccountNo}}</p>
+              </div>
+            </div><hr>
+
+            <div>
+              <h4 style="color: gray;">Sender Details</h4>
+                <div>
+                  <h4>{{user.Lastname}} {{user.firstName}}</h4>
+
+                  <p style="font-weight: 600;" >Fincch | {{user.accountNumber}}</p>
+                </div><hr>
+
+                <div >
+                  <h4 style="color: gray;">Paid On</h4>
+                  <h4 style="font-weight: 600;" >{{doneTransfer.createdDate}}</h4>
+                </div><hr>
+                <div >
+                  <h4 style="color: gray;">Description</h4>
+                  <h4 style="font-weight: 600;" >{{doneTransfer.Description}}</h4>
+                </div><hr>
+
+                <div>
+                  <h4 style="color: gray;">Transaction Id</h4>
+                  <h4  style="font-weight: 600;">0902672309101203567360476277526</h4>
+                </div><hr>
+
+                <div>
+                  <h4 style="color: gray;">Payment Type</h4>
+
+                  <h4  style="font-weight: 600;">Outward International Bank Transfer</h4>
+                </div><hr>
+                <div>
+                  <p style="text-align: center">© 2023 Fincch-BankPay Ltd (Company No. 11472232). All rights reserved.
+ If you would like to find out more about which Fincch entity you receive services from, please reach
+out to us via the Live chat.
+ United State International banking services offered by Fincch BankPay (RC796975) with registered address
+at 7648 E US Hwy 36, Los Angeles, United States. Fincch BankPay is licensed by the central bank of United State supported by World Bank for International flow banking. Deposits are insured by the United State Deposit Insurance Corporation (USDIC).</p>
+                </div>
+
+
+
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+ {{/if}}
+{{/if}}

@@ -1,0 +1,92 @@
+.transaction-details{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($color: #4C4D4D, $alpha: .6);
+    z-index: 999;
+    &__content{
+      
+       position: absolute;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%,-50%);
+       padding: 2px;
+        box-shadow:  20px 20px 60px #7e7e7e, 
+             -20px -20px 60px #aaaaaa;
+
+       border-radius: 10px;
+        min-width: 320px;
+        width: 600px;
+       max-width: 700px;
+       height: 500px;
+  
+        .col-sm-4{
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            position: relative;
+            background-color: $main-color;
+            color: white;
+            text-align: center;
+            .info{
+                position: absolute;
+                top: 50%;
+                left: 40px;
+                transform:translateY(-50%);
+                // line-height: 500px;
+            }
+            .total{
+                font-size: 27px;
+                font-weight: bold;
+            }
+            .date{
+                font-size: 15px;
+                font-weight: 500;
+            }
+        }
+        .col-sm-8{
+            position: relative;
+            padding: 20px;
+            background-color: white;
+            .title{
+                margin: 16px 40px;
+                h3{
+                    font-size: 22px;
+                    font-weight: 400;
+                    color: #1E1D1C;
+                }
+                span{
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    background-color: red;
+                    color: white;
+                    font-weight: bold;
+                    line-height: 30px;
+                    text-align: center;
+                }
+            }
+            .trans-item{
+                margin-top: 16px;
+            }
+            .detail__content{
+                width: 100%;
+                padding:40px;
+                
+                .transaction-item{
+                  margin-top: 16px;
+                    h3{
+                        font-weight: 500;
+                        font-size: 14px;
+                    }
+                    p{
+                        font-size: 14px;
+                        font-weight: 400;
+                        color: #8E9A9D;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,94 @@
+
+<div id="page-wrapper" >
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                     <h2>Add new Account</h2>
+
+                       
+                    </div>
+                </div>
+                 <!-- /. ROW  -->
+                 <hr />
+                 
+                 
+                 <div class="row">
+                 <div class="col-md-4">
+                 <form  method="POST" action="/admin/addaccountt" >
+                                        <div class="form-group">
+                                            <label>Country:</label>
+                                            <input class="form-control" name="country" value="" />
+                                        </div>
+                                        <span style="color:#F00;"></span>
+                                        
+
+
+                                        <div class="form-group">
+                                            <label>Bank Name:</label>
+                                            <input class="form-control"  name="bankname" value=""/>
+                                        </div>
+                                        <span></span>
+                                        
+                                       <div class="form-group">
+                                            <label>Account Number</label>
+                                            <input class="form-control" name="acctnum" value="" />
+                                        </div>
+                                       <span></span>   
+                                        
+                                         <div class="form-group">
+                                            <label>Account Name</label>
+                                            <input class="form-control" name="acctname" value="" />
+                                        </div>
+                                        <span style="color:#F00;"></span> 
+                                        <div class="form-group">
+                                            <label>swiftcode</label>
+                                            <input class="form-control" name="swiftcode" value="" />
+                                        </div>
+
+
+
+
+                                                                                
+
+
+
+                                        <span style="color:#F00;"></span>
+                                        <button  style="float:right;" type="submit" class="btn btn-primary">Create</button>
+                 </form>
+                      <br/> <br/> <br/> <br/> <br/>
+                 </div> 
+                 
+                <div class="col-md-8">
+              <div class="table-responsive">
+                  <table class="table">
+                      <thead>
+                <tr>
+                    <th>Country</th>
+                    <th>Bank Name</th>
+                    <th>Account Number</th>
+                    <th>Account name</th>
+                    <th>Swiftcode</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each transferr}}
+                <tr>
+                    <td>{{country}}</td>
+                    <td>{{bank}}</td>
+                    <td>{{accounttno}}</td>
+                    <td>{{name}}</td>
+                    <td>{{swiftcode}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+                 </div>
+               
+    </div>
+             <!-- /. PAGE INNER  -->
+            </div>
+
+            <h1></h1>

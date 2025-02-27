@@ -1,0 +1,52 @@
+.accounts{
+    margin-top: 60px;
+    margin-left: -30px;
+    margin-right: -30px;
+    background-color: #ddd;
+    padding: 0 20px;
+    &__content{
+        padding: 20px 10px ;
+        h3{
+            font-size: 18px;
+            text-transform: uppercase;
+            color: #333;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #333;
+            width: max-content;
+        }
+        &--list{
+            margin-top: 20px;
+            margin-left: -10px;
+            margin-right: -10px;
+            &--list-item{
+                padding: 10px;
+               
+                &--infor{
+                    border-radius: 5px;
+                    border: 1px solid #ddd;
+                    min-height: 120px;
+                    padding:20px 10px;
+                    box-shadow: 2px 2px 5px rgba(0,0,0,.1),
+                    -2px -2px 5px rgba(0,0,0,.1);
+                    transition: all .4s;
+                    background-color: #fff;
+                    &:hover{
+                        transform: rotate(360deg);
+                    }
+                    div{
+                        margin-top: 10px;
+                        label{
+                            font-size: 14px;
+                            white-space: nowrap;
+                            &:first-child{
+                                font-weight: bold;
+                            }
+                        }
+
+
+                    }
+                }
+            }
+        }
+    }
+}

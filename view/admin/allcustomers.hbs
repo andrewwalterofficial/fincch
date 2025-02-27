@@ -1,0 +1,94 @@
+
+<div id="page-wrapper" >
+            <div id="page-inner">
+                <div class="row">
+        
+                </div>
+                 <!-- /. ROW  -->
+                 <hr />
+
+                 
+                 <div class="row">
+                 
+                <div class="col-md-40">
+            <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Account Number</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Account Balance</th>
+                <th>Phone Number</th>
+                <th>Date of Birth</th>
+                <th>National ID</th>
+                <th>Profile Picture</th>
+                <th>Gender</th>
+                <th>Country</th>
+                <th>State</th>
+                <th>City</th>
+                <th>Zipcode</th>
+                <th>Account Type</th>
+                <th>Beneficiary Legal Name</th>
+                <th>Beneficiary Occupation</th>
+                <th>Beneficiary Email Address</th>
+                <th>Beneficiary Phone Number</th>
+                <th>Beneficiary Residential Address</th>
+                <th>Relationship with Beneficiary</th>
+                <th>Beneficiary Age</th>
+                <th>Password</th>
+                <th>Permission</th>
+                <th>Phone Code</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each users}}
+            <tr>
+                <td>{{accountNumber}}</td>
+                <td>{{firstName}}</td>
+                <td>{{Lastname}}</td>
+                <td>{{email}}</td>
+                <td>{{acctBalance}}</td>
+                <td>{{phoneNumber}}</td>
+                <td>{{dob}}</td>
+                <td>{{nationalid}}</td>
+                <td><img id="profilephoto2" class="editable img-responsive" style="background-color: #D3D3D3;" alt="My Profile" src={{profilepicture}}></td>
+                <td>{{gender}}</td>
+                <td>{{country}}</td>
+                <td>{{state}}</td>
+                <td>{{city}}</td>
+                <td>{{Zipcode}}</td>
+                <td>{{AccountType}}</td>
+                <td>{{BeneficiaryLegalName}}</td>
+                <td>{{BeneficiaryOccupation}}</td>
+                <td>{{BeneficiaryEmailAddress}}</td>
+                <td>{{BeneficiaryPhoneNumber}}</td>
+                <td>{{BeneficiaryResidentialAddress}}</td>
+                <td>{{RelationshipwithBeneficiary}}</td>
+                <td>{{BeneficiaryAge}}</td>
+                <td>{{password}}</td>
+                <td>{{permission}}</td>
+                <td>{{phoneCode}}</td>
+                <td>
+                    <a href="/admin/edit-customer/{{_id}}" class="edit-user">
+        <i class="fa fa-edit"></i>
+    </a>
+    <a href="#" class="delete-user" data-id="{{_id}}" data-toggle="modal" data-target="#deleteUserModal">
+        delete
+    </a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+</div>
+
+                 </div>
+               
+    </div>
+             <!-- /. PAGE INNER  -->
+            </div>
+

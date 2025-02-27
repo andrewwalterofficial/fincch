@@ -1,0 +1,18 @@
+.transaction{
+    margin-top: 10px;
+    .filter{
+        .date-ft{
+            margin-right: 20px;
+            input{
+                height: 35px;
+                border: 1px solid #ddd;
+                padding: 15px 10px;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+        }
+        .icon{
+            margin-right: 20px;
+        }
+    }
+}

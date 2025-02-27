@@ -1,0 +1,88 @@
+.card{
+    // display: inline-block;
+    // width: auto;
+    // display: flex;
+    &__content{
+      
+        padding: 20px;
+            .gutter{
+                height: 171px;
+                width: 320px;
+                max-width: 350px;
+                padding: 40px 30px 20px;
+                border-radius: 10px;
+                background: linear-gradient(145deg, #30cb67, #29ab56);
+                box-shadow:  24px 24px 36px #1a6e38, 
+                inset  -24px -24px 36px #40ff88;
+            }
+    }
+    &-number{
+        margin-bottom: 20px;
+        font-size: 18px;
+        color: rgba(250, 250, 250, 0.8);
+        font-weight: bolder;
+        letter-spacing: 1.25px;
+        text-shadow: 1px 1px 1px #333,
+                    -1px -1px 1px gray;
+    }
+    &-date{
+      
+        margin: 10px 0;
+        
+        &__item{
+            display: flex;
+            align-items: center;
+            margin:10px 0;
+            p{
+                font-size: 8px;
+                text-transform: uppercase;
+                font-weight: 200;
+                max-width: 4px;
+                margin-right: 25px;
+            }
+            .date{
+                
+                color:rgba(250, 250, 250, 0.8);
+                font-weight: bolder;
+                letter-spacing: 1.25px;
+                text-shadow: 1px 1px 1px #333,
+                            -1px -1px 1px gray;
+                            span{
+                                font-size: 14px;
+                            }
+            }
+        }
+        
+    }
+    &-name{
+        color: rgba(250, 250, 250, 0.8);
+        font-weight: bolder;
+        letter-spacing: 1.25px;
+        font-size: 14px;
+        text-transform: uppercase;
+        text-shadow: 1px 1px 1px #333,
+                    -1px -1px 1px gray;
+    }
+    &-from{
+
+    }
+    &-good-thru{
+
+    }
+    .type{
+        p{
+            padding: 4px 2px;
+            background-color: white;
+            font-size: 16px;
+            font-weight: bolder;
+            margin-left: 20px;
+            border-radius: 2px;
+        }
+        .napas, .visa{
+            color: blue;
+        }
+    }
+    .arg{
+
+    }
+}

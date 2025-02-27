@@ -1,0 +1,236 @@
+
+    <div class="loading">
+      <div class="loading-content">
+        <span>...Loading</span>
+      </div>
+    </div>
+    <!-- //header -->
+    <div class="wrapper row">
+      <div class="wrapper__left col-xs-12 col-md-6">
+        <div class="overlayer"></div>
+        <div class="wrapper__left--content" style="height: 100%;">
+          <div>
+            <a href="/"
+              ><img
+                src="./img/cover_prev_ui.png"
+                style="
+                  position: absolute;
+                  z-index: 99;
+                  top: 30px;
+                  left: 10px;
+
+                  padding: 4px 8px;
+                  border-radius: 5px;
+                "
+                alt=""
+                width="300px"
+
+            /></a>
+          </div>
+          <div>
+            <h3>Welcome Aboard!</h3>
+            <p>
+              Let us help you embark on a journey towards unlimited instant deposits, seamless withdrawals, and trusted payouts, enjoyed by millions worldwide..
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper__right col-xs-12 col-md-6" style="margin-top: 1050px;">
+        <div class="modal">
+          <div class="title">
+            <h3
+              style="
+                margin: 0 0 20px;
+                text-align: center;
+                font-size: 18px;
+                color: #333;
+                font-weight: 400;
+              "
+            >
+              Sign Up
+            </h3>
+          </div>
+          <form action="/register" method="post">
+            <div class="form-group">
+              <label for="firstname">First Name</label>
+              <input type="text" required placeholder="Enter Your firstname" name="firstname" id="firstname"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="lastname">Last Name</label>
+              <input type="text" required placeholder="Enter Your lastname" name="lastname" id="lastname"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text" required placeholder="Enter Your Email" name="email" id="email"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="phonenumber">Phone Number</label>
+              <input type="text" required placeholder="Enter Your Phone Number" name="phonenumber" id="phonenumber"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="dateofbirth">Date of Birth</label>
+              <input type="date" required placeholder="Date of Birth" name="dateofbirth" id="dateofbirth" autocomplete="off"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="nationaliD">National ID</label>
+              <input type="text" required placeholder="Enter Your National ID" name="nationaliD" id="nationaliD"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="profilepicture">Profile Picture</label>
+              <input type="file" required  name="profilepicture" id="profilepicture"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="gender">Gender</label>
+              <select name="gender" id="gender">
+                <option value="">Please select your gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+
+            </div>
+
+            <div class="form-group">
+              <label for="country">Country</label>
+              <input type="text" required placeholder="Enter Your Country" name="country" id="country"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="state">State</label>
+              <input type="text" required placeholder="Enter Your State" name="state" id="state"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" required placeholder="Enter Your City" name="city" id="city"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="residentialaddress">Residential Address</label>
+              <input type="text" required placeholder="Enter Your Residential Address" name="residentialaddress" id="residentialaddress"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="zipcode">Zipcode</label>
+              <input type="text" required placeholder="Enter Your Zipcode" name="zipcode" id="zipcode"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="accounttype">Account Type</label>
+              <legend>Account Type</legend>
+
+                <select name="accounttype" id="accounttype" >
+                  <option value="">Select Account Type</option>
+                  <option value="Checking">Checking Account</option>
+                  <option value="Savings">Saving Account</option>
+                  <option value="Fixed Deposit">Fixed Deposit Account</option>
+                  <option value="Current">Current Account</option>
+                  <option value="Business">Business Account</option>
+                </select>
+
+            </div>
+            <h3 style="font-weight:700; color:green;">Registered Next of Kin</h3>
+
+            <div class="form-group">
+              <label for="beneficiarylegalname">Beneficiary Legal Name</label>
+              <input type="text" required placeholder="Enter Your Beneficiary Legal Name" name="beneficiarylegalname" id="beneficiarylegalname"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="beneficiaryoccupation">Beneficiary Occupation</label>
+              <input type="text" required placeholder="Enter Your Beneficiary Occupation" name="beneficiaryoccupation" id="beneficiaryoccupation"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="beneficiaryemailaddress">Beneficiary Email Address</label>
+              <input type="text" required placeholder="Enter Your Beneficiary Email Address" name="beneficiaryemailaddress" id="beneficiaryemailaddress"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="beneficiaryphonenumber">Beneficiary Phone Number</label>
+              <input type="text" required placeholder="Enter Your Beneficiary Phone Number" name="beneficiaryphonenumber" id="beneficiaryphonenumber"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="nextofkinresidentialaddress">Next of Kin Residential Address</label>
+              <input type="text" required placeholder="Enter Your Next of Kin Residential Addressty" name="nextofkinresidentialaddress" id="nextofkinresidentialaddress"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="pleaseselectrelationship">Please select Relationship</label>
+              <select required name="pleaseselectrelationship" id="pleaseselectrelationship" >
+                <option value="">Please select Relationship</option>
+                 <option value="Son">Son</option>
+                 <option value="Daughter">Daughter</option>
+                 <option value="Father">Father</option>
+                 <option value="Mother">Mother</option>
+                 <option value="Husband">Husband</option>
+                 <option value="Spouse">Spouse</option>
+                 <option value="Hobby">Hobby</option>
+                 <option value="Cousin">Cousin</option>
+                 <option value="Others">Others</option>
+               </select>
+
+            </div>
+
+            <div class="form-group">
+              <label for="pleaseselectage">Please select Age</label>
+              <select required name="pleaseselectage" id="pleaseselectage">
+                <option value="">Beneficiary Age</option>
+                  <option value="18-25yrs">18-25yrs</option>
+                  <option value="25-35yrs">25-35yrs</option>
+                  <option value="35-50yrs">35-50yrs</option>
+                  <option value="50-above">50yrs and above</option>
+                  </select>
+
+            </div>
+
+
+            <h3 style="font-weight:700; color:red;">Personal Security Details</h3>
+            <div class="form-group">
+              <label for="txtPassword">Password</label>
+              <input type="password" required name="txtPassword" id="txtPassword" placeholder="* * * * * * * * *"
+              />
+            </div>
+            <div class="form-group">
+              <label for="txtPassword">Password</label>
+              <input type="password" require name="txtCfPassword"id="txtCfPassword" placeholder="* * * * * * * * *"
+              />
+            </div>
+            <div class="form-group">
+              
+            </div>
+            <div class="form-actions">
+
+              <input type="submit" value="Continue" />
+
+              <div class="another t-center">
+                Do you have an account? <a href="./login">Sign in</a>
+              </div>
+
+          </form>
+        </div>
+      </div>
+    </div>

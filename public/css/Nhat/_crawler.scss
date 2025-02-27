@@ -1,0 +1,215 @@
+
+
+// @mixin rs-xs {
+//     @media only screen and (min-width:300px){
+//         @content;
+//     }
+// }
+// @mixin rs-xs {
+//     @media only screen and (min-width:300px){
+//         @content;
+//     }
+// }
+// @mixin rs-sm {
+//     @media only screen and (min-width:576px){
+//         @content;
+//     }
+// }
+// @mixin rs-md {
+//     @media only screen and (min-width:768px){
+//         @content;
+//     }
+// }
+// @mixin rs-lg {
+//     @media only screen and (min-width:900px){
+//         @content;
+//     }
+// }
+// @mixin rs-xl {
+//     @media only screen and (min-width:1200px){
+//         @content;
+//     }
+// }
+// $grid-col:12;
+
+// .row{
+//     display: flex;
+//     flex-wrap: wrap;
+//     @for $i from 0 through $grid-col{
+//         @include rs-xs(){
+//             .col-xs-#{$i}{
+//                 width:(100%/$grid-col)*$i;
+//             }
+//         }
+//         @include rs-sm(){
+//             .col-sm-#{$i}{
+//                 width:(100%/$grid-col)*$i;
+//             }
+//         }
+//         @include rs-md(){
+//             .col-md-#{$i}{
+//                 width:(100%/$grid-col)*$i;
+//             }
+//         }
+//         @include rs-lg(){
+//             .col-lg-#{$i}{
+//                 width:(100%/$grid-col)*$i;
+//             }
+//         }
+//         @include rs-xl(){
+//             .col-xl-#{$i}{
+//                 width:(100%/$grid-col)*$i;
+//             }
+//         }
+      
+        
+//     }
+// }
+
+.news{
+    position: relative;
+    background-color: #f1f1f1 !important;
+    padding: 80px 0 60px;
+    min-height: 100vh;
+    overflow: hidden scroll;
+    .container{
+        .news__content{
+            &-item{
+                padding: 10px;
+                .gutter{
+                    border-radius: 6px;
+                    border: 1px solid #ddd;
+                    padding:5px 5px 10px;
+                    height:100%;
+                    .image{
+                        background-color: white;
+                        border-radius: 6px;
+                        margin:-4px -4px 0px;
+                        a{
+                            img{
+                                border-radius: 6px;
+                                width: 100%;
+                                
+                                @include rs-xs{
+                                    height:150px;
+                                }
+                                @include rs-md{
+                                    height:170px;
+                                }
+                            }
+                        }
+                    }
+                    .news__content-item__title{
+                        padding: 5px 0px 0;
+                        a{
+                            h3{
+                                color: #333;
+                               
+                                @include rs-xs{
+                                    font-size: 14px;
+                                }
+                                @include rs-md{
+                                    font-size: 16px;
+                                }
+                             }
+
+                        }
+                    }
+                    .date{
+                        span{
+                            color: gray;
+                          
+                            @include rs-xs{
+                                font-size: 10px;
+                            }
+                            @include rs-md{
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                    .news__content-item__content{
+                        p{
+                            margin-top: 10px;
+                            color:#333;
+                           
+                            @include rs-xs{
+                                font-size: 12px;
+                            }
+                            @include rs-md{
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                    &:hover{
+                        transition: all .4s ease-in-out;
+                        transform: translateY(-3px);
+                        box-shadow: 0px 0px 5px 1px #bdc3c7;
+                    }
+                }
+            }
+        }
+    }
+    .pagination{
+        position:absolute;
+        bottom:10px;
+        left: 50%;
+        transform:translateX(-50%);
+        ul{
+            li{
+               border-radius: 2px;
+               padding:2px;
+               position: relative;
+               z-index: 99;
+               text-align: center;
+               overflow: hidden;
+               position: relative;
+               &:before{
+                content: ' ';
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                border-bottom: 20px solid  hsl(226, 85%, 60%);
+                z-index: -1;
+                border-left: 20px solid transparent;
+                transform:translateX(100%);
+                transition: all .3s ease-in-out;
+            }
+                &:after{
+                    content: ' ';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    border-bottom: 20px solid hsl(226, 85%, 60%);
+                    z-index: -1;
+                    border-right: 20px solid transparent;
+                    transform:translateX(-100%);
+                   
+                    transition: all .3s ease-in-out;
+                }
+                &:hover{
+                    &:after{
+                        transform:translateX(40%);
+                    }
+                    &::before{
+                        transform:translateX(-40%);
+                    }
+                }
+                
+            }
+            .active{
+                background-color:$main-color;
+                a{
+                    button{
+
+                        color:white;
+
+                    }
+                } 
+            }
+        }
+    }
+}

@@ -1,0 +1,204 @@
+
+<div id="page-wrapper" >
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                     <h2>Add new Customer</h2>   
+                        <h5>Welcome, Love to see you back.  </h5>
+                       
+                    </div>
+                </div>
+                 <!-- /. ROW  -->
+                 <hr />
+
+                 
+                 <div class="row">
+                 <div class="col-md-4">
+                <form method="POST" action="/admin/createaccount" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <label>Account Number:</label>
+                                            <input class="form-control" name="accountNumber" value="" />
+                                        </div>
+                                        <span style="color:#F00;"></span>
+
+
+
+                                        <div class="form-group">
+                                            <label>Firstname</label>
+                                            <input class="form-control"  name="firstname" value=""/>
+                                        </div>
+                                        <span></span>
+                                        
+                                       <div class="form-group">
+                                            <label>Lastname</label>
+                                            <input class="form-control" name="lastname" value="" />
+                                        </div>
+                                       <span></span>   
+                                        
+                                         <div class="form-group">
+                                            <label>Email</label>
+                                            <input class="form-control" name="email" value="" />
+                                        </div>
+                                        <span style="color:#F00;"></span> 
+                                        <div class="form-group">
+                                            <label>Account Password</label>
+                                            <input class="form-control" name="txtPassword" value="" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="nationaliD">National ID</label>
+                                            <input type="text" required placeholder="Enter Your National ID" name="nationaliD"
+                                            />
+                                          </div>
+
+                                         <div class="form-group">
+                                            <label for="gender">Gender</label>
+                                            <select name="gender" id="gender">
+                                              <option value="">Please select your gender</option>
+                                              <option value="Male">Male</option>
+                                              <option value="Female">Female</option>
+                                            </select>
+
+                                          </div>
+                                       <span></span>
+                                          <div class="form-group">
+                                            <label>Phone Number</label>
+                                            <input class="form-control"  name="phonenumber" value=""/>
+                                        </div>
+                                       <span></span> 
+
+                                        <div class="form-group">
+                                            <label>City</label>
+                                            <input class="form-control" name="city" value="" />
+                                        </div>
+                                        <span></span> 
+                                                                                
+                                        <div class="form-group">
+                                            <label>State</label> 
+                                            <input class="form-control" name="state" value="" />
+                                        </div>
+                                        <span></span>  
+                                                                                
+                                        <div class="form-group">
+                                            <label>Country</label>
+                                            <input class="form-control"  name="country" value=""/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="residentialaddress">Residential Address</label>
+                                            <input type="text" required placeholder="Enter Your Residential Address" name="residentialaddress" id="residentialaddress"
+                                            />
+                                          </div>
+
+                                          <div class="form-group">
+                                            <label for="zipcode">Zipcode</label>
+                                            <input type="text" required placeholder="Enter Your Zipcode" name="zipcode" id="zipcode"
+                                            />
+                                          </div>
+
+                                        <span></span> 
+                                                                                
+                                         <div class="form-group">
+                                            <label> Amount </label>
+                                            <input class="form-control"  name="acctbalance" value=""/>
+                                        </div>
+                                        <span></span> 
+                                        <i>Don't use any currency Symbol or Comma</i>
+                                        <br/><br/>
+                                        
+                                        <div class="form-group">
+                                            <label for="accounttype">Account Type</label>
+                                            <legend>Account Type</legend>
+
+                                              <select name="accounttype" id="accounttype" >
+                                                <option value="">Select Account Type</option>
+                                                <option value="Checking">Checking Account</option>
+                                                <option value="Savings">Saving Account</option>
+                                                <option value="Fixed Deposit">Fixed Deposit Account</option>
+                                                <option value="Current">Current Account</option>
+                                                <option value="Business">Business Account</option>
+                                              </select>
+
+                                          </div>
+                                        <span></span>
+                    
+                    <div class="form-group">
+                                            <label> Beneficiary Fullname </label>
+                                            <input class="form-control" name="beneficiarylegalname" value="" />
+                                        </div>
+                                        <span></span>
+                    
+                    <div class="form-group">
+                                            <label> Beneficiary Address </label>
+                                            <input class="form-control" name="nextofkinresidentialaddress" value="" />
+                                        </div>
+                                        <span></span>
+
+                                         <div class="form-group">
+                                            <label> Beneficiary Mobile No. </label>
+                                            <input class="form-control" name="beneficiaryphonenumber" value="" />
+                                        </div>
+                                        <span></span>
+                    
+                                         <div class="form-group">
+                                            <label> Beneficiary Email </label>
+                                            <input class="form-control" name="beneficiaryemailaddress" value="" />
+                                        </div>
+                                        <span></span>
+
+                                        <div class="form-group">
+                                            <label>Beneficiary Occupation</label>
+                                            <input class="form-control" name="beneficiaryoccupation" value="" />
+                                        </div>
+
+                                        <div class="form-group">
+                                              <label for="pleaseselectrelationship">Please select Relationship</label>
+                                              <select required name="pleaseselectrelationship" id="pleaseselectrelationship" >
+                                                <option value="">Please select Relationship</option>
+                                                <option value="Son">Son</option>
+                                                <option value="Daughter">Daughter</option>
+                                                <option value="Father">Father</option>
+                                                <option value="Mother">Mother</option>
+                                                <option value="Husband">Husband</option>
+                                                <option value="Spouse">Spouse</option>
+                                                <option value="Hobby">Hobby</option>
+                                                <option value="Cousin">Cousin</option>
+                                                <option value="Others">Others</option>
+                                              </select>
+
+                                            </div>
+
+                                            <div class="form-group">
+                                              <label for="pleaseselectage">Please select Age</label>
+                                              <select required name="pleaseselectage" id="pleaseselectage">
+                                                <option value="">Beneficiary Age</option>
+                                                  <option value="18-25yrs">18-25yrs</option>
+                                                  <option value="25-35yrs">25-35yrs</option>
+                                                  <option value="35-50yrs">35-50yrs</option>
+                                                  <option value="50-above">50yrs and above</option>
+                                                  </select>
+
+                                            </div>
+                    
+                    
+                    
+                                        
+                                         <div class="form-group">
+        <label>Photo</label>
+        <input type="file" name="profilepicture" accept="image/*" required />
+    </div>
+                                       
+                                        <span style="color:#F00;"></span>  
+                                        <button  style="float:right;" type="submit" class="btn btn-primary">Create</button>
+                 </form>
+                      <br/> <br/> <br/> <br/> <br/>
+                 </div> 
+                 
+
+                 </div>
+               
+    </div>
+             <!-- /. PAGE INNER  -->
+            </div>
+
+            <h1></h1>

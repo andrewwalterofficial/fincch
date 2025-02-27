@@ -1,0 +1,125 @@
+
+
+<div >
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="margin-bottom: 30px;">TRANSFER TO OTHER FINCCH ACCOUNT  </h5>
+        <div class="alert alert-danger" role="alert">
+          <P style="text-align: center;">PLEASE MAKE SURE YOU INPUT THE CORRECT DETAILS CAUSE IT WILL TAKE WEEKS BEFORE IT GET REVERSED THANK YOU!!</P>
+         </div>
+      </div>
+      <div class="modal-body">
+          <div class="profile-user-info profile-user-info-striped">
+            <div class="profile-info-row">
+                    <div class="profile-info-name" style="color:#386782  ;"> Debit From: </div>
+                    <div class="profile-info-value">
+                        <span  class="editable" style="float: left;">{{user.accountNumber}}</span>
+                    </div>
+            </div>
+            <div class="profile-info-row">
+                    <div class="profile-info-name" style="color:#386782  ;"> Acount Owner: </div>
+                    <div class="profile-info-value">
+                        <span  class="editable" style="float: left;">Mr.{{user.firstName}} {{user.Lastname}}</span>
+                    </div>
+            </div>
+              <div class="profile-info-row">
+                    <div class="profile-info-name" style="color:#386782  ;"> Amount: </div>
+                    <div class="profile-info-value">
+                            <span class="editable" style="float: left;">$ {{formattedBalance}}</span>
+                    </div>
+            </div>
+            </div>
+
+            {{#if errorMessage}}
+    <div class="alert alert-danger" role="alert">
+      <p style="font-size: 13px;">{{errorMessage}}</p>
+    </div>
+  {{/if}}
+      
+            <form class="form-horizontal"  action="/dashboard/transfertocommercialbank" method="POST">
+
+            
+
+        <div class="form-group">
+  <label class="col-sm-5 control-label no-padding-right" for="form-field-1" style="color:#386782;"> Receiver Country: </label>
+  <div class="col-sm-7">
+    <input style="border-color:black;" type="text" name="receivercountry" id="receivercountry" class="col-xs-10 col-sm-7">
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-5 control-label no-padding-right" for="form-field-1" style="color:#386782;"> Receiver Bank: </label>
+  <div class="col-sm-7">
+    <input style="border-color:black;" type="text" name="receiverbank" id="receiverbank" class="col-xs-10 col-sm-7">
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-5 control-label no-padding-right" for="form-field-1" style="color:#386782;"> Receiver Correct Bank FullName : </label>
+  <div class="col-sm-7">
+    <input style="border-color:black;" type="text" name="receivername" id="receivercountry" class="col-xs-10 col-sm-7">
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-5 control-label no-padding-right" for="form-field-1" style="color:#386782;"> Account Number: </label>
+  <div class="col-sm-7">
+    <input style="border-color:black;" type="text" name="receiveraccounttno" id="receiveraccounttno" class="col-xs-10 col-sm-7">
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-5 control-label no-padding-right" for="form-field-1" style="color:#386782;"> Swift Code: </label>
+  <div class="col-sm-7">
+    <input style="border-color:black;" type="text" name="receiverswiftcode" id="receiverswiftcode" class="col-xs-10 col-sm-7">
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-5 control-label no-padding-right" for="form-field-1" style="color:#386782;"> Amount: </label>
+  <div class="col-sm-7">
+    <input style="border-color:black;" type="text" name="receiveramount" id="receiveramount" class="col-xs-10 col-sm-7">
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-5 control-label no-padding-right" for="form-field-1" style="color:#386782;"> Description: </label>
+  <div class="col-sm-7">
+    <input style="border-color:black;" type="text" name="description" id="description" class="col-xs-10 col-sm-7">
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-5 control-label no-padding-right" for="form-field-1" style="color:#386782;"> Transaction Pin</label>
+  <div class="col-sm-7">
+    <input style="border-color:black;" type="password" name="transactionpin" id="transactionpin" class="col-xs-10 col-sm-7">
+  </div>
+</div>
+
+ {{!-- {{#if errorMessage}}
+    <div class="form-group">
+  <label class="col-sm-5 control-label no-padding-right" for="form-field-1" style="color:#386782;"> Transaction Pin</label>
+  <div class="col-sm-7">
+    <input style="border-color:black;" type="password" name="transactionpin" id="transactionpin" class="col-xs-10 col-sm-7">
+  </div>
+</div>
+
+{{/if}} --}}
+
+
+          
+
+
+      </div>
+      <div class="modal-footer">
+        <button  type="submit" class="btn btn-danger">
+             <i class="none"></i>
+            Confirm
+        </button>
+        <button type="button" class="btn btn-secondary">Close</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

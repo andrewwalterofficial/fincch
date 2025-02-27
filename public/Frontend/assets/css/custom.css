@@ -1,0 +1,113 @@
+﻿form.request-del div.international {
+    display: none;
+    transition: 2s ease-in-out;
+}
+
+form.request-del div.inter-state {
+    display: none;
+    transition: 2s ease-in-out;
+}
+
+#slide-btn {
+    color: #ffffff;
+    
+}
+
+#lbb-logo {
+    height: 150px;
+    width: 250px;
+}
+#lbb-logo img{
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+}
+
+#lbb-logo-mobile {
+    display: none;
+}
+
+
+.nav-light .navbar-nav .nav-item .nav-link {
+    color: black !important;
+}
+
+
+.header-fullpage .request-btn .btn-theme {
+    color: white !important;
+    background-color: #4caf4c !important;
+}
+
+
+.logo-footer img {
+    max-width: 100%;
+}
+
+.logo-footer {
+    width: 400px;
+    height: 100px;
+}
+.pro-content .row {
+    --bs-gutter-x: 4rem;
+    margin:0;
+}
+
+.img-business-man {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: -100%;
+    margin-right: 15px;
+}
+
+    .img-business-man img {
+        width: 100%;
+        object-fit: cover;
+        height: 100%;
+    }
+
+@media (max-width:991px) {
+    #lbb-logo-mobile {
+        display: block;
+
+    }
+
+    #lbb-logo {
+        display: none;
+    }
+
+    .order-success{
+        padding-top: 20px;
+        padding-bottom:50px;
+    }
+    .img-business-man{
+        display: none;
+    }
+}
+@media (max-width:767px){
+    #m-flu{
+        max-width:100%;
+    }
+}
+@media (max-width:575px) {
+    .about-bg .re-img img{
+        width:95%;
+        height: 95%;
+        object-fit: cover;
+        position:relative;
+        left:2.5%;
+    }
+    .about-bg blockquote{
+        text-align: center;
+    }
+}
+.livechat-icon {
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    color: #000000;
+    font-size: 12px;
+    text-align: center;
+    line-height: 20px;
+  }

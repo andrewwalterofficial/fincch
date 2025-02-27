@@ -1,0 +1,172 @@
+<div id="page-wrapper">
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Edit Customer Details</h2>
+                <form action="/admin/update-customer/{{user._id}}" method="POST">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Account Number</label>
+                            <input type="text" class="form-control" value="{{user.accountNumber}}" readonly>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>First Name</label>
+                            <input type="text" name="firstName" class="form-control" value="{{user.firstName}}">
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-6 form-group">
+                            <label>Last Name</label>
+                            <input type="text" name="Lastname" class="form-control" value="{{user.Lastname}}">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" class="form-control" value="{{user.email}}">
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-6 form-group">
+                            <label>Phone Number</label>
+                            <input type="text" name="phoneNumber" class="form-control" value="{{user.phoneNumber}}">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Date of Birth</label>
+                            <input type="date" name="dob" class="form-control" value="{{user.dob}}">
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-6 form-group">
+                            <label>National ID</label>
+                            <input type="text" name="nationalid" class="form-control" value="{{user.nationalid}}">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Profile Picture URL</label>
+                            <img id="profilephoto2" class="editable img-responsive" style="background-color: #D3D3D3; width: 60px" alt="My Profile" src={{user.profilepicture}}>
+                            <input type="text" name="profilepicture" class="form-control" value="{{user.profilepicture}}">
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-6 form-group">
+                            <label>Gender</label>
+                            <select name="gender" class="form-control">
+                                <option value="Male" {{#if (eq user.gender "Male")}}selected{{/if}}>Male</option>
+                                <option value="Female" {{#if (eq user.gender "Female")}}selected{{/if}}>Female</option>
+                                <option value="Other" {{#if (eq user.gender "Other")}}selected{{/if}}>Other</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Country</label>
+                            <input type="text" name="country" class="form-control" value="{{user.country}}">
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-6 form-group">
+                            <label>State</label>
+                            <input type="text" name="state" class="form-control" value="{{user.state}}">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>City</label>
+                            <input type="text" name="city" class="form-control" value="{{user.city}}">
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-6 form-group">
+                            <label>Address</label>
+                            <input type="text" name="address" class="form-control" value="{{user.address}}">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Zipcode</label>
+                            <input type="text" name="Zipcode" class="form-control" value="{{user.Zipcode}}">
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-6 form-group">
+                            <label>Account Type</label>
+                            <input type="text" name="AccountType" class="form-control" value="{{user.AccountType}}">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Beneficiary Legal Name</label>
+                            <input type="text" name="BeneficiaryLegalName" class="form-control" value="{{user.BeneficiaryLegalName}}">
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-6 form-group">
+                            <label>Beneficiary Occupation</label>
+                            <input type="text" name="BeneficiaryOccupation" class="form-control" value="{{user.BeneficiaryOccupation}}">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Beneficiary Email</label>
+                            <input type="email" name="BeneficiaryEmailAddress" class="form-control" value="{{user.BeneficiaryEmailAddress}}">
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-6 form-group">
+                            <label>Beneficiary Phone</label>
+                            <input type="text" name="BeneficiaryPhoneNumber" class="form-control" value="{{user.BeneficiaryPhoneNumber}}">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Beneficiary Address</label>
+                            <input type="text" name="BeneficiaryResidentialAddress" class="form-control" value="{{user.BeneficiaryResidentialAddress}}">
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-6 form-group">
+                            <label>Relationship with Beneficiary</label>
+                            <input type="text" name="RelationshipwithBeneficiary" class="form-control" value="{{user.RelationshipwithBeneficiary}}">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Beneficiary Age</label>
+                            <input type="text" name="BeneficiaryAge" class="form-control" value="{{user.BeneficiaryAge}}">
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-6 form-group">
+                            <label>Allow Transfer</label>
+                            <div class="form-check">
+                                <input type="checkbox" name="tranfer" class="form-check-input" id="tranfer" {{#if user.tranfer}}checked{{/if}}>
+                                <label class="form-check-label" for="tranfer">Enable Transfer</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary">Update Customer</button>
+                            <a href="/admin/allcustomers" class="btn btn-secondary">Cancel</a>
+                            <button type="button" class="btn btn-danger" onclick="deleteUser('{{user._id}}')">Delete Customer</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function deleteUser(userId) {
+    if (confirm('Are you sure you want to delete this user?')) {
+        fetch(`/admin/delete-customer/${userId}`, {
+            method: 'DELETE',
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.href = '/admin/allcustomers';
+            } else {
+                alert('Failed to delete user.');
+            }
+        });
+    }
+}
+</script>

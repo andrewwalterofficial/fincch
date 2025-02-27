@@ -1,0 +1,110 @@
+<div class="loading">
+      <div class="loading-content">
+        <span>...Loading</span>
+      </div>
+    </div>
+
+    <!-- //header -->
+    <div class="wrapper row">
+
+      <div class="authentication-section">
+        <div class="authentication-grid">
+            <div class="authentication-item authentication-img-bg">
+              <div class="">
+
+                <div class="wrapper__left--content" style="margin-top: 200px; color: red; text-align: center; font-size: 19px;"">
+                  <div>
+                    <a href="/"
+                      ><img
+                        src="./img/cover_prev_ui.png"
+                        style="
+                          position: absolute;
+                          z-index: 99;
+                          top: 30px;
+                          left: 0px;
+
+
+                          border-radius: 5px;
+
+                        "
+                        width="400px"
+                        alt=""
+                    /></a>
+                  </div>
+                  <div>
+                    <h3>Welcome back!</h3>
+                    <p style=" color: red;"">
+                      We are glad to see you again! Instant deposits, withdrawals &
+                      payouts trusted by millions worldwide.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="authentication-item bg-white pl-15 pr-15">
+                <div class="authentication-user-panel">
+                    <div class="authentication-user-header">
+
+                        <a href="index-2.html"><img src="./img/cover_prev_ui.png" alt="logo" style="width: 300 !important;"></a>
+                        <h3>Welcome Aboard!</h3>
+                        <p>We are glad to see you again! Instant deposits, withdrawals & payouts trusted by millions worldwide.</p>
+                    </div>
+                    <div class="authentication-user-body">
+                        <div class="authentication-tab">
+                            <div class="authentication-tab-item authentication-tab-active" data-authentcation-tab="1">
+                                <img src="assets/images/login.png" alt="icon">
+                                Login
+                            </div>
+                        </div>
+                        <div class="authentication-tab-details">
+                            <div class="authentication-tab-details-item authentication-tab-details-active" data-authentcation-details="1">
+                                <div class="authentication-form ">
+                                    <form method="POST" action="/login/user">
+                                        <div class="row mediii">
+
+                                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                                <div class="form-group mb-15">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="flaticon-user"></i></span>
+                                                        </div>
+                                                        <input type="text" class="form-control" name='acctNum' id="acctNum" placeholder="Your Account Number"  >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                                <div class="form-group mb-15">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="flaticon-user"></i></span>
+                                                        </div>
+                                                        <input type="password" class="form-control" name='passwordd' id="passwordd" placeholder="Your Password">
+                                                    </div>
+                                                    {{#if errorMessage}}
+    <p class="error-message">{{ errorMessage }}</p>
+  {{/if}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                                <button id="btnlogin"  class="btn1 orange-gradient full-width text-orange-700 text-3xl font-bold underline">
+                                                    <i id="loginSpinProcess" class="flaticon-login"></i>
+                                                    Login
+                                                </button>
+                                            </div>
+                                        </div>
+                                      <div class="col-sm-12 col-md-12 col-lg-12">
+                                               <br/>
+                                               <center><a href="/register" class="link-us"> Don't have an Account. </a>  </center>
+                                               <br/>
+                                           </div>	
+                                    </form>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
