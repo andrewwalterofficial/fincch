@@ -1,75 +1,241 @@
+<style>
+  .receipt-container {
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    color: #333;
+  }
+  
+  .receipt-header {
+    background: linear-gradient(135deg, #2D5BFF, #1A3FCC);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .receipt-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+  
+  .receipt-logo img {
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  .receipt-status {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    padding: 6px 15px;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  .receipt-amount {
+    margin: 20px 0 10px;
+    font-size: 38px;
+    font-weight: 700;
+  }
+  
+  .receipt-body {
+    padding: 25px;
+  }
+  
+  .receipt-section {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+  }
+  
+  .receipt-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+  
+  .section-label {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .section-value {
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0;
+  }
+  
+  .receipt-footer {
+    background: #f9f9f9;
+    padding: 15px;
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    border-top: 1px solid #eee;
+  }
+  
+  .download-btn {
+    display: block;
+    background: #2D5BFF;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 20px auto 5px;
+    transition: background 0.3s;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  .download-btn:hover {
+    background: #1A3FCC;
+  }
+  
+  .loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .loading-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .loading-spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #2D5BFF;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  @media (max-width: 600px) {
+    .receipt-container {
+      width: 95%;
+      margin: 0 auto;
+      border-radius: 10px;
+    }
+    
+    .receipt-amount {
+      font-size: 32px;
+    }
+  }
+</style>
+
 {{#if doneTransfer}}
- {{#if user}}
- <div class="loading">
+  {{#if user}}
+    <div class="loading">
       <div class="loading-content">
-        <span>Payment Loading.....</span>
+        <div class="loading-spinner"></div>
+        <span>Processing payment...</span>
       </div>
     </div>
-<div >
-    <div>
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div style="display: flex;">
-            <img src="/img/cover_prev_ui.png" alt="" width="50%">
-            <p  class="transactiondetails">Transaction Details</p>
-          </div>
-          <div>
-            <h4 style="text-align: center;">Transaction Amount</h4>
-            <h1 style="text-align: center;">$  {{formattedBalance}}</h1>
-            <!-- Add other transaction details as needed -->
-          </div>
-          <div class="modal-body">
-            <div>
-              <h4 style="color: gray;">Beneficiary Details</h4>
-              <div>
-                 <h4 style="font-weight: 600;">{{doneTransfer.receiverName}}</h4>
-                 <p style="font-weight: 600;" >{{doneTransfer.receiverAccountNo}}</p>
-              </div>
-            </div><hr>
-
-            <div>
-              <h4 style="color: gray;">Sender Details</h4>
-                <div>
-                  <h4>{{user.Lastname}} {{user.firstName}}</h4>
-
-                  <p style="font-weight: 600;" >Fincch | {{user.accountNumber}}</p>
-                </div><hr>
-
-                <div >
-                  <h4 style="color: gray;">Paid On</h4>
-                  <h4 style="font-weight: 600;" >{{doneTransfer.createdDate}}</h4>
-                </div><hr>
-                <div >
-                  <h4 style="color: gray;">Description</h4>
-                  <h4 style="font-weight: 600;" >{{doneTransfer.Description}}</h4>
-                </div><hr>
-
-                <div>
-                  <h4 style="color: gray;">Transaction Id</h4>
-                  <h4  style="font-weight: 600;">0902672309101203567360476277526</h4>
-                </div><hr>
-
-                <div>
-                  <h4 style="color: gray;">Payment Type</h4>
-
-                  <h4  style="font-weight: 600;">Outward International Bank Transfer</h4>
-                </div><hr>
-                <div>
-                  <p style="text-align: center">© 2023 Fincch-BankPay Ltd (Company No. 11472232). All rights reserved.
- If you would like to find out more about which Fincch entity you receive services from, please reach
-out to us via the Live chat.
- United State International banking services offered by Fincch BankPay (RC796975) with registered address
-at 7648 E US Hwy 36, Los Angeles, United States. Fincch BankPay is licensed by the central bank of United State supported by World Bank for International flow banking. Deposits are insured by the United State Deposit Insurance Corporation (USDIC).</p>
-                </div>
-
-
-
-
-            </div>
-
-          </div>
+    
+    <div class="receipt-container" id="receipt">
+      <div class="receipt-header">
+        <div class="receipt-logo">
+          <img src="/img/cover_prev_ui.png" alt="Fincch Logo">
+          <h2>Fincch BankPay</h2>
         </div>
+        <div class="receipt-status">Transaction Successful</div>
+        <div class="receipt-amount">$ {{formattedBalance}}</div>
+        <p>Transaction Complete</p>
+      </div>
+      
+      <div class="receipt-body">
+        <div class="receipt-section">
+          <p class="section-label">Beneficiary Details</p>
+          <h3 class="section-value">{{doneTransfer.receiverName}}</h3>
+          <p class="section-value">{{doneTransfer.receiverAccountNo}}</p>
+        </div>
+        
+        <div class="receipt-section">
+          <p class="section-label">Sender Details</p>
+          <h3 class="section-value">{{user.Lastname}} {{user.firstName}}</h3>
+          <p class="section-value">Fincch | {{user.accountNumber}}</p>
+        </div>
+        
+        <div class="receipt-section">
+          <p class="section-label">Paid On</p>
+          <p class="section-value">{{doneTransfer.createdDate}}</p>
+        </div>
+        
+        <div class="receipt-section">
+          <p class="section-label">Description</p>
+          <p class="section-value">{{doneTransfer.Description}}</p>
+        </div>
+        
+        <div class="receipt-section">
+          <p class="section-label">Transaction ID</p>
+          <p class="section-value">0902672309101203567360476277526</p>
+        </div>
+        
+        <div class="receipt-section">
+          <p class="section-label">Payment Type</p>
+          <p class="section-value">Outward International Bank Transfer</p>
+        </div>
+        
+        <button class="download-btn" onclick="downloadReceipt()">Download Receipt</button>
+      </div>
+      
+      <div class="receipt-footer">
+        <p>© 2025 Fincch-BankPay Ltd (Company No. 11472232). All rights reserved.</p>
+        <p>United State International banking services offered by Fincch BankPay (RC796975).</p>
+        <p>Deposits are insured by the United State Deposit Insurance Corporation (USDIC).</p>
       </div>
     </div>
- {{/if}}
+    
+    <script>
+      // Hide loading after 1.5 seconds
+      setTimeout(function() {
+        document.querySelector('.loading').style.display = 'none';
+      }, 1500);
+      
+      // Function to download the receipt as PDF
+      function downloadReceipt() {
+        // In a real implementation, you would use a library like html2pdf.js
+        // This is a placeholder showing the concept
+        alert("Receipt download initiated. In a real implementation, this would generate a PDF of the receipt.");
+        
+        // Example implementation with html2pdf (would require the library to be included)
+        /*
+        const element = document.getElementById('receipt');
+        const opt = {
+          margin: 0.5,
+          filename: 'fincch_receipt_{{doneTransfer.createdDate}}.pdf',
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { scale: 2 },
+          jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+        
+        html2pdf().set(opt).from(element).save();
+        */
+      }
+    </script>
+  {{/if}}
 {{/if}}
