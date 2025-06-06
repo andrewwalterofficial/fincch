@@ -151,7 +151,7 @@ router.post('/transferToOtherBank', async (req, res) => {
     errorMessage = 'INSUFFICIENT BALANCE';
   } else if (!otherbankBankName || !otherbankAcctNo || !otherBankAmount) {
     errorMessage = 'Please fill in all required fields!';
-  } else if (transactionpin !== "12356") {
+  } else if (transactionpin !== "0707") {
     errorMessage = 'Incorrect Transaction Pin';
   } else {
     // Calculate the remaining balance
