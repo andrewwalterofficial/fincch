@@ -87,128 +87,29 @@ router.get('/tranfertofincch', async (req, res) => {
   }
 });
 
-router.post('/transfertocommercialbank', async (req, res) => {
-  // Hardcoded transaction PIN (replace with user.transactionPin in production)
-  const validTransactionPin = "12356"; // Should be user.transactionPin from DB
+router.get('/tranfertocommercialbank', async (req, res) => {
+  if (!req.isAuthenticated()) {
+    return res.status(401).send('User not authenticated');
+  }
 
-  let Fortransfers = {
-    receivercountry: req.body.receivercountry,
-    receiverbank: req.body.receiverbank,
-    receivername: req.body.receivername,
-    receiveraccounttno: req.body.receiveraccounttno,
-    receiverswiftcode: req.body.receiverswiftcode,
-    amount: parseFloat(req.body.receiveramount),
-    description: req.body.description,
-    transactionpin: req.body.transactionpin,
-  };
+  const user = await users.findOne({ _id: req.user._id }).lean();
+  const errorMessage = req.query.errorMessage;
 
-  let errorMessage = '';
-
-  try {
-    // Find the user
-    const user = await users.findOne({ _id: req.user._id });
-    if (!user) {
-      errorMessage = 'User not found';
-      return res.redirect('/dashboard/tranfertocommercialbank?errorMessage=' + encodeURIComponent(errorMessage));
-    }
-
-    // Check if account is locked for transfers
+  if (user) {
+    // Check if the user's transfer is disabled
     if (user.tranfer === false) {
-      errorMessage = 'Your account has been locked. Please contact support for assistance.';
-      return res.redirect('/dashboard/tranfertocommercialbank?errorMessage=' + encodeURIComponent(errorMessage));
+      const transferErrorMessage = 'Your account has been locked. Please contact support for assistance.';
+      return res.render('user/commercialbank', { layout: 'userdashboard', user, errorMessage: transferErrorMessage, formattedBalance: user.acctBalance });
     }
 
-    // Validate transaction PIN
-    if (Fortransfers.transactionpin !== validTransactionPin) {
-      errorMessage = 'Invalid transaction PIN';
-      return res.redirect('/dashboard/tranfertocommercialbank?errorMessage=' + encodeURIComponent(errorMessage));
+    let formattedBalance;
+    if (typeof user.acctBalance === 'number') {
+      formattedBalance = user.acctBalance.toLocaleString('en-US', { minimumFractionDigits: 2 });
+    } else {
+      formattedBalance = user.acctBalance;
     }
 
-    // Find transfer details (if needed)
-    const transferr = await transfer.findOne({ country: Fortransfers.receivercountry }).lean();
-
-    // Check for sufficient balance
-    if (Fortransfers.amount > user.acctBalance) {
-      errorMessage = 'INSUFFICIENT BALANCE';
-      return res.redirect('/dashboard/tranfertocommercialbank?errorMessage=' + encodeURIComponent(errorMessage));
-    }
-
-    // Calculate remaining balance
-    const remainingBalance = user.acctBalance - Fortransfers.amount;
-
-    // Update user's balance
-    user.acctBalance = remainingBalance;
-    await user.save();
-
-    // Create a new DoneTransfer document
-    const doneTransfer = new DoneTransfer({
-      senderAccountNo: user.accountNumber,
-      receiverCountry: Fortransfers.receivercountry,
-      receiverBank: Fortransfers.receiverbank,
-      receiverName: Fortransfers.receivername,
-      receiverAccountNo: Fortransfers.receiveraccounttno,
-      receiverSwiftCode: Fortransfers.receiverswiftcode,
-      amount: Fortransfers.amount,
-      Description: Fortransfers.description,
-    });
-
-    // Save the transfer
-    await doneTransfer.save();
-    console.log(`Transfer done: ${doneTransfer}`);
-
-    // Send email to the user
-    const mailOptions = {
-      from: '"FincchBankPay" <fincch@zohomail.com>',
-      to: user.email,
-      subject: 'Transaction Successful',
-      html: `
-        <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
-          <h2 style="color: #4CAF50; text-align: center;">Transaction Successful</h2>
-          <p>Dear ${user.firstName} ${user.Lastname},</p>
-          <p>Your transaction has been successfully processed. Below are the details:</p>
-          <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
-            <tr>
-              <th style="padding: 10px; border: 1px solid #ddd; background-color: #f9f9f9;">Sender Account</th>
-              <td style="padding: 10px; border: 1px solid #ddd;">${user.accountNumber}</td>
-            </tr>
-            <tr>
-              <th style="padding: 10px; border: 1px solid #ddd; background-color: #f9f9f9;">Receiver Name</th>
-              <td style="padding: 10px; border: 1px solid #ddd;">${Fortransfers.receivername}</td>
-            </tr>
-            <tr>
-              <th style="padding: 10px; border: 1px solid #ddd; background-color: #f9f9f9;">Receiver Account</th>
-              <td style="padding: 10px; border: 1px solid #ddd;">${Fortransfers.receiveraccounttno}</td>
-            </tr>
-            <tr>
-              <th style="padding: 10px; border: 1px solid #ddd; background-color: #f9f9f9;">Amount</th>
-              <td style="padding: 10px; border: 1px solid #ddd;">$${Fortransfers.amount.toFixed(2)}</td>
-            </tr>
-            <tr>
-              <th style="padding: 10px; border: 1px solid #ddd; background-color: #f9f9f9;">Description</th>
-              <td style="padding: 10px; border: 1px solid #ddd;">${Fortransfers.description || 'N/A'}</td>
-            </tr>
-          </table>
-          <p style="margin-top: 20px;">Thank you for using our services. If you have any questions, please contact our support team.</p>
-          <p>Best regards,<br>FincchBankPay</p>
-        </div>
-      `,
-    };
-
-    // Send the email
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.error('Error sending email:', error);
-      } else {
-        console.log('Email sent:', info.response);
-      }
-    });
-
-    // Redirect to the transaction receipt page
-    return res.redirect('/dashboard/transactionreciept?doneTransfer=' + encodeURIComponent(JSON.stringify(doneTransfer)));
-  } catch (error) {
-    console.error('Error processing transfer:', error);
-    errorMessage = 'Error saving the transaction';
-    return res.redirect('/dashboard/tranfertocommercialbank?errorMessage=' + encodeURIComponent(errorMessage));
+    res.render('user/commercialbank', { layout: 'userdashboard', user, errorMessage, formattedBalance });
   }
 });
 
@@ -447,108 +348,127 @@ router.post('/transferToOtherBank', async (req, res) => {
 });
 
 router.post('/transfertocommercialbank', async (req, res) => {
-  const transactionpin = "12356";
+  // Hardcoded transaction PIN (replace with user.transactionPin in production)
+  const validTransactionPin = "0707"; // Should be user.transactionPin from DB
+
   let Fortransfers = {
-    receivcountry: req.body.receivercountry,
-    receivebaank: req.body.receiverbank,
-    receivname: req.body.receivername,
-    receivacct: req.body.receiveraccounttno,
-    receivswiftcode: req.body.receiverswiftcode,
+    receivercountry: req.body.receivercountry,
+    receiverbank: req.body.receiverbank,
+    receivername: req.body.receivername,
+    receiveraccounttno: req.body.receiveraccounttno,
+    receiverswiftcode: req.body.receiverswiftcode,
     amount: parseFloat(req.body.receiveramount),
-    descriptionn: req.body.description,
+    description: req.body.description,
     transactionpin: req.body.transactionpin,
   };
 
-  const user = await users.findOne({ _id: req.user._id });
-  const transferr = await transfer.findOne({ country: Fortransfers.receivcountry }).lean();
-
   let errorMessage = '';
 
-  if (Fortransfers.amount > user.acctBalance) {
-    errorMessage = 'INSUFFICIENT BALANCE';
-  } else {
-    // Calculate the remaining balance
+  try {
+    // Find the user
+    const user = await users.findOne({ _id: req.user._id });
+    if (!user) {
+      errorMessage = 'User not found';
+      return res.redirect('/dashboard/tranfertocommercialbank?errorMessage=' + encodeURIComponent(errorMessage));
+    }
+
+    // Check if account is locked for transfers
+    if (user.tranfer === false) {
+      errorMessage = 'Your account has been locked. Please contact support for assistance.';
+      return res.redirect('/dashboard/tranfertocommercialbank?errorMessage=' + encodeURIComponent(errorMessage));
+    }
+
+    // Validate transaction PIN
+    if (Fortransfers.transactionpin !== validTransactionPin) {
+      errorMessage = 'Invalid transaction PIN';
+      return res.redirect('/dashboard/tranfertocommercialbank?errorMessage=' + encodeURIComponent(errorMessage));
+    }
+
+    // Find transfer details (if needed)
+    const transferr = await transfer.findOne({ country: Fortransfers.receivercountry }).lean();
+
+    // Check for sufficient balance
+    if (Fortransfers.amount > user.acctBalance) {
+      errorMessage = 'INSUFFICIENT BALANCE';
+      return res.redirect('/dashboard/tranfertocommercialbank?errorMessage=' + encodeURIComponent(errorMessage));
+    }
+
+    // Calculate remaining balance
     const remainingBalance = user.acctBalance - Fortransfers.amount;
 
-    // Update the user's current balance in the database
+    // Update user's balance
     user.acctBalance = remainingBalance;
     await user.save();
 
     // Create a new DoneTransfer document
     const doneTransfer = new DoneTransfer({
       senderAccountNo: user.accountNumber,
-      receiverCountry: Fortransfers.receivcountry,
-      receiverBank: Fortransfers.receivebaank,
-      receiverName: Fortransfers.receivname,
-      receiverAccountNo: Fortransfers.receivacct,
-      receiverSwiftCode: Fortransfers.receivswiftcode,
+      receiverCountry: Fortransfers.receivercountry,
+      receiverBank: Fortransfers.receiverbank,
+      receiverName: Fortransfers.receivername,
+      receiverAccountNo: Fortransfers.receiveraccounttno,
+      receiverSwiftCode: Fortransfers.receiverswiftcode,
       amount: Fortransfers.amount,
-      Description: Fortransfers.descriptionn,
+      Description: Fortransfers.description,
     });
 
-    try {
-      // Save the new DoneTransfer document
-      await doneTransfer.save();
-      console.log(`Transfer done: ${doneTransfer}`);
+    // Save the transfer
+    await doneTransfer.save();
+    console.log(`Transfer done: ${doneTransfer}`);
 
-      // Send email to the user
-      const mailOptions = {
-        from: '"FincchBankPay" <fincch@zohomail.com>',
-        to: user.email, // Recipient address (user's email)
-        subject: 'Transaction Successful', // Email subject
-        html: `
-          <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
-            <h2 style="color: #4CAF50; text-align: center;">Transaction Successful</h2>
-            <p>Dear ${user.firstName} ${user.Lastname},</p>
-            <p>Your transaction has been successfully processed. Below are the details:</p>
-            <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
-              <tr>
-                <th style="padding: 10px; border: 1px solid #ddd; background-color: #f9f9f9;">Sender Account</th>
-                <td style="padding: 10px; border: 1px solid #ddd;">${user.accountNumber}</td>
-              </tr>
-              <tr>
-                <th style="padding: 10px; border: 1px solid #ddd; background-color: #f9f9f9;">Receiver Name</th>
-                <td style="padding: 10px; border: 1px solid #ddd;">${Fortransfers.receivname}</td>
-              </tr>
-              <tr>
-                <th style="padding: 10px; border: 1px solid #ddd; background-color: #f9f9f9;">Receiver Account</th>
-                <td style="padding: 10px; border: 1px solid #ddd;">${Fortransfers.receivacct}</td>
-              </tr>
-              <tr>
-                <th style="padding: 10px; border: 1px solid #ddd; background-color: #f9f9f9;">Amount</th>
-                <td style="padding: 10px; border: 1px solid #ddd;">$${Fortransfers.amount.toFixed(2)}</td>
-              </tr>
-              <tr>
-                <th style="padding: 10px; border: 1px solid #ddd; background-color: #f9f9f9;">Description</th>
-                <td style="padding: 10px; border: 1px solid #ddd;">${Fortransfers.descriptionn}</td>
-              </tr>
-            </table>
-            <p style="margin-top: 20px;">Thank you for using our services. If you have any questions, please contact our support team.</p>
-            <p>Best regards,<br>FincchBankPay</p>
-          </div>
-        `,
-      };
+    // Send email to the user
+    const mailOptions = {
+      from: '"FincchBankPay" <fincch@zohomail.com>',
+      to: user.email,
+      subject: 'Transaction Successful',
+      html: `
+        <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
+          <h2 style="color: #4CAF50; text-align: center;">Transaction Successful</h2>
+          <p>Dear ${user.firstName} ${user.Lastname},</p>
+          <p>Your transaction has been successfully processed. Below are the details:</p>
+          <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+            <tr>
+              <th style="padding: 10px; border: 1px solid #ddd; background-color: #f9f9f9;">Sender Account</th>
+              <td style="padding: 10px; border: 1px solid #ddd;">${user.accountNumber}</td>
+            </tr>
+            <tr>
+              <th style="padding: 10px; border: 1px solid #ddd; background-color: #f9f9f9;">Receiver Name</th>
+              <td style="padding: 10px; border: 1px solid #ddd;">${Fortransfers.receivername}</td>
+            </tr>
+            <tr>
+              <th style="padding: 10px; border: 1px solid #ddd; background-color: #f9f9f9;">Receiver Account</th>
+              <td style="padding: 10px; border: 1px solid #ddd;">${Fortransfers.receiveraccounttno}</td>
+            </tr>
+            <tr>
+              <th style="padding: 10px; border: 1px solid #ddd; background-color: #f9f9f9;">Amount</th>
+              <td style="padding: 10px; border: 1px solid #ddd;">$${Fortransfers.amount.toFixed(2)}</td>
+            </tr>
+            <tr>
+              <th style="padding: 10px; border: 1px solid #ddd; background-color: #f9f9f9;">Description</th>
+              <td style="padding: 10px; border: 1px solid #ddd;">${Fortransfers.description || 'N/A'}</td>
+            </tr>
+          </table>
+          <p style="margin-top: 20px;">Thank you for using our services. If you have any questions, please contact our support team.</p>
+          <p>Best regards,<br>FincchBankPay</p>
+        </div>
+      `,
+    };
 
-      // Send the email
-      transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          console.error('Error sending email:', error);
-        } else {
-          console.log('Email sent:', info.response);
-        }
-      });
+    // Send the email
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error('Error sending email:', error);
+      } else {
+        console.log('Email sent:', info.response);
+      }
+    });
 
-      // Redirect to the transaction receipt page
-      return res.redirect('/dashboard/transactionreciept?doneTransfer=' + encodeURIComponent(JSON.stringify(doneTransfer)));
-    } catch (error) {
-      console.log(error);
-      errorMessage = 'Error saving the transaction';
-    }
-  }
-
-  // Check if an error message is set
-  if (errorMessage) {
-    res.redirect('/dashboard/tranfertocommercialbank?errorMessage=' + encodeURIComponent(errorMessage));
+    // Redirect to the transaction receipt page
+    return res.redirect('/dashboard/transactionreciept?doneTransfer=' + encodeURIComponent(JSON.stringify(doneTransfer)));
+  } catch (error) {
+    console.error('Error processing transfer:', error);
+    errorMessage = 'Error saving the transaction';
+    return res.redirect('/dashboard/tranfertocommercialbank?errorMessage=' + encodeURIComponent(errorMessage));
   }
 });
 
